@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .warning {
+        font-weight: bold;
+        color: red;
+    }
+</style>
+
+<div class="text-center">
+    <h1 class="display-4">Welcome, please create your account:</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<div id="message" class="warning"></div>
+
+<form id="myform" action="/submit" method="post">
+    <label>First Name: </label><input type="text" id="firstname" name="firstname" /><br />
+    <div id="fnmessage" class="warning"></div>
+    <label>Last Name: </label><input type="text" id="lastname" name="lastname" /><br />
+    <div id="lnmessage" class="warning"></div>
+    <label>Email Address: </label><input type="text" id="email" name="email" /><br />
+    <div id="emmessage" class="warning"></div>
+    <label>Password: </label><input type="text" id="password" name="password" /><br />
+    <div id="pwmessage" class="warning"></div>
+
+    <label>Confirm Password: </label><input type="text" id="confirmpassword" name="confirmpassword" /><br /><br />
+    <div id="cfmessage" class="warning"></div>
+
+
+
+
+
+
+</form>
+    <button id="submit">Submit</button>
+
+
+
+<script>
+
+
+    function CheckValues() {
+        let a = document.querySelector('#firstname').value;
+        let b = document.querySelector('#lastname').value;
+        let c = document.querySelector('#email').value;
+        let d = document.querySelector('#password').value;
+        let e1 = document.querySelector('#confirmpassword').value;
+
+        if (!a || !b || !c || !d || !e1) {
+            document.querySelector('#message').innerText = 'No field can be blank.';
+        }
+        if (a.length < 2) {
+            document.querySelector('#fnmessage').innerText = 'First name must contain more than two characters.'
+        }
+        if (b.length < 2) {
+            document.querySelector('#lnmessage').innerText = 'Last name must contain more than two characters.'
+        }
+        if (c.length < 2) {
+            document.querySelector('#emmessage').innerText = 'Email address must contain more than two characters.'
+        }
+        if (d = !e1) {
+            document.querySelector('cfmessage').innerText = "Passwords do not match."
+        }
+        
+        else {
+            document.querySelector('#myform').submit();
+        }
+      
+        
+    }
+    function clearMessage() {
+        document.querySelector('#message').innerText = '';
+    }
+
+    let e = document.querySelector('#submit');
+    e.addEventListener('click', CheckValues);
+
+    let t1 = document.querySelector('#firstname');
+    t1.addEventListener('keypress', clearMessage)
+    let t2 = document.querySelector('#lastname');
+    t2.addEventListener('keypress', clearMessage)
+    let t3 = document.querySelector('#email');
+    t3.addEventListener('keypress', clearMessage)
+    let t4 = document.querySelector('#password');
+    t4.addEventListener('keypress', clearMessage)
+
+
+
+
+
+
+
+</script>
+
